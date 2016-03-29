@@ -15,8 +15,9 @@ public class Person {
     private final StringProperty lastName;
     private final ObjectProperty<LocalDate> birthday;
 
-
-
+    public Person() {
+        this(null, null, null, null, null, null, null);
+    }
 
     public Person(Integer codeSMO, Integer polisVersion, Integer polisNumber, String firstName, String secondName,
                   String lastName, LocalDate birthday) {
