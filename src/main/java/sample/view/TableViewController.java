@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.model.Person;
+import sample.util.ExcelDataReader;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -84,6 +85,7 @@ public class TableViewController {
                 new FileChooser.ExtensionFilter("XLS", "*.xls"));
 
         File file = fileChooser.showOpenDialog(null);
+        ExcelDataReader.readFile(file.getPath());
     }
 
 
