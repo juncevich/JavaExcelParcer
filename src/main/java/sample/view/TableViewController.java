@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import sample.model.Person;
 
 import java.awt.event.ActionEvent;
@@ -41,8 +43,6 @@ public class TableViewController {
     @FXML
     private void initialize() {
         initData();
-
-
 
         // устанавливаем тип и значение которое должно хранится в колонке
         codeSMO.setCellValueFactory(cellData -> cellData.getValue().codeSMOProperty().asObject());
@@ -83,6 +83,9 @@ public class TableViewController {
 
     public void handleOpenButtonAction() {
         openFile.setText("Thanks!!!!");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.showOpenDialog(new Stage());
     }
 
 
