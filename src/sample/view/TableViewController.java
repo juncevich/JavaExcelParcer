@@ -2,13 +2,16 @@ package sample.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import sample.model.Person;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.time.LocalDate;
 
 public class TableViewController {
@@ -53,6 +56,13 @@ public class TableViewController {
         // заполняем таблицу данными
         tablePerson.setItems(usersData);
 
+//        openFile.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent mouseEvent) {
+//                openFile.setText("Thanks!");
+//            }
+//        });
+
 
     }
 
@@ -71,7 +81,9 @@ public class TableViewController {
 
 
 
-    public void handleOpenButtonAction(ActionEvent actionEvent) {
-        System.out.println("Test");
+    public void handleOpenButtonAction() {
+        openFile.setText("Thanks!!!!");
     }
+
+
 }
