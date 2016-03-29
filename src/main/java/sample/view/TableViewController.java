@@ -15,15 +15,15 @@ import java.io.File;
 import java.time.LocalDate;
 
 public class TableViewController {
-    private ObservableList<Person> usersData = FXCollections.observableArrayList();
+    private final ObservableList<Person> usersData = FXCollections.observableArrayList();
     @FXML
     private TableView<Person> tablePerson;
     @FXML
-    private TableColumn<Person, Integer> codeSMO;
+    private TableColumn<Person, String> codeSMO;
     @FXML
-    private TableColumn<Person, Integer> polisVersion;
+    private TableColumn<Person, String> polisVersion;
     @FXML
-    private TableColumn<Person, Integer> polisNumber;
+    private TableColumn<Person, String> polisNumber;
     @FXML
     private TableColumn<Person, String> firstName;
     @FXML
@@ -31,7 +31,7 @@ public class TableViewController {
     @FXML
     private TableColumn<Person, String> lastName;
     @FXML
-    private TableColumn<Person, LocalDate> birthday;
+    private TableColumn<Person, String> birthday;
     @FXML
     private Button openFile;
 
@@ -39,12 +39,12 @@ public class TableViewController {
     // инициализируем форму данными
     @FXML
     private void initialize() {
-        initData();
+
 
         // устанавливаем тип и значение которое должно хранится в колонке
-        codeSMO.setCellValueFactory(cellData -> cellData.getValue().codeSMOProperty().asObject());
-        polisVersion.setCellValueFactory(cellData -> cellData.getValue().polisVersionProperty().asObject());
-        polisNumber.setCellValueFactory(cellData -> cellData.getValue().polisNumberProperty().asObject());
+        codeSMO.setCellValueFactory(cellData -> cellData.getValue().codeSMOProperty());
+        polisVersion.setCellValueFactory(cellData -> cellData.getValue().polisVersionProperty());
+        polisNumber.setCellValueFactory(cellData -> cellData.getValue().polisNumberProperty());
         firstName.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         secondName.setCellValueFactory(cellData -> cellData.getValue().secondNameProperty());
         lastName.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
@@ -63,18 +63,6 @@ public class TableViewController {
 
     }
 
-    // подготавливаем данные для таблицы
-    // вы можете получать их с базы данных
-    private void initData() {
-        usersData.add(new Person(74, 3, 555555, "firstName", "secondName", "lastName", LocalDate.of(1999, 2, 21)));
-        usersData.add(new Person(74, 3, 555555, "firstName", "secondName", "lastName", LocalDate.of(1999, 2, 21)));
-        usersData.add(new Person(74, 3, 555555, "firstName", "secondName", "lastName", LocalDate.of(1999, 2, 21)));
-        usersData.add(new Person(74, 3, 555555, "firstName", "secondName", "lastName", LocalDate.of(1999, 2, 21)));
-        usersData.add(new Person(74, 3, 555555, "firstName", "secondName", "lastName", LocalDate.of(1999, 2, 21)));
-        usersData.add(new Person(74, 3, 555555, "firstName", "secondName", "lastName", LocalDate.of(1999, 2, 21)));
-        usersData.add(new Person(74, 3, 555555, "firstName", "secondName", "lastName", LocalDate.of(1999, 2, 21)));
-
-    }
 
 
     public void handleOpenButtonAction() {
@@ -85,7 +73,7 @@ public class TableViewController {
                 new FileChooser.ExtensionFilter("XLS", "*.xls"));
 
         File file = fileChooser.showOpenDialog(null);
-        ExcelDataReader.readFile(file.getPath());
+        usersData.addAll(ExcelDataReader.readFile(file.getPath()));
     }
 
 

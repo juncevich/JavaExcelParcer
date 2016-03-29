@@ -22,13 +22,13 @@ public class ExcelDataReader {
     public static List<Person> readFile(String filePath) {
         List<Person> personList = new ArrayList<Person>();
         FileInputStream fileInputStream = null;
-        int codeSMO;
-        int polisVersion;
-        int polisNumber;
+        String codeSMO;
+        String polisVersion;
+        String polisNumber;
         String firstName;
         String secondName;
         String lastName;
-        LocalDate birthday;
+        String birthday;
         try {
             fileInputStream = new FileInputStream(filePath);
 
@@ -38,18 +38,18 @@ public class ExcelDataReader {
             int numberOfSheets = workbook.getNumberOfSheets();
 
             //looping over each workbook sheet
-            for (int i = 0; i < numberOfSheets; i++) {
+            for (int i = 1; i < 2; i++) {
                 Sheet sheet = workbook.getSheetAt(i);
-                Iterator rowIterator = sheet.iterator();
-                for (int j =19; j < sheet.getLastRowNum(); j++) {
-                    Row row = sheet.getRow(i);
-                    codeSMO = Integer.parseInt(row.getCell(2).getStringCellValue());
-                    polisVersion = Integer.parseInt(row.getCell(3).getStringCellValue());
-                    polisNumber = Integer.parseInt(row.getCell(4).getStringCellValue());
+
+                for (int j =19; j < sheet.getPhysicalNumberOfRows(); j++) {
+                    Row row = sheet.getRow(j);
+                    codeSMO = String.valueOf((int) row.getCell(2).getNumericCellValue());
+                    polisVersion = String.valueOf((int) row.getCell(3).getNumericCellValue());
+                    polisNumber = row.getCell(4).getStringCellValue();
                     firstName = row.getCell(5).getStringCellValue();
                     secondName = row.getCell(6).getStringCellValue();
                     lastName = row.getCell(7).getStringCellValue();
-                    birthday = row.getCell(7).getDateCellValue().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    birthday = String.valueOf((int)row.getCell(8).getNumericCellValue());
 
                     Person person = new Person(codeSMO , polisVersion, polisNumber, firstName, secondName, lastName, birthday );
                     personList.add(person);

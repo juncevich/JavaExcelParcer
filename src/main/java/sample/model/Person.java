@@ -3,66 +3,60 @@ package sample.model;
 
 import javafx.beans.property.*;
 
-import java.time.LocalDate;
-
 
 public class Person {
-    private final IntegerProperty codeSMO;
-    private final IntegerProperty polisVersion;
-    private final IntegerProperty polisNumber;
+    private final StringProperty codeSMO;
+    private final StringProperty polisVersion;
+    private final StringProperty polisNumber;
     private final StringProperty firstName;
     private final StringProperty secondName;
     private final StringProperty lastName;
-    private final ObjectProperty<LocalDate> birthday;
+    private final StringProperty birthday;
 
-    public Person() {
-        this(null, null, null, null, null, null, null);
-    }
-
-    public Person(Integer codeSMO, Integer polisVersion, Integer polisNumber, String firstName, String secondName,
-                  String lastName, LocalDate birthday) {
-        this.codeSMO = new SimpleIntegerProperty(codeSMO);
-        this.polisVersion = new SimpleIntegerProperty(polisVersion);
-        this.polisNumber = new SimpleIntegerProperty(polisNumber);
+    public Person(String codeSMO, String polisVersion, String polisNumber, String firstName, String secondName,
+                  String lastName, String birthday) {
+        this.codeSMO = new SimpleStringProperty(codeSMO);
+        this.polisVersion = new SimpleStringProperty(polisVersion);
+        this.polisNumber = new SimpleStringProperty(polisNumber);
         this.firstName = new SimpleStringProperty(firstName);
         this.secondName = new SimpleStringProperty(secondName);
         this.lastName = new SimpleStringProperty(lastName);
-        this.birthday = new SimpleObjectProperty<LocalDate>(birthday);
+        this.birthday = new SimpleStringProperty(birthday);
     }
 
-    public int getCodeSMO() {
+    public String getCodeSMO() {
         return codeSMO.get();
     }
 
-    public IntegerProperty codeSMOProperty() {
+    public StringProperty codeSMOProperty() {
         return codeSMO;
     }
 
-    public void setCodeSMO(int codeSMO) {
+    public void setCodeSMO(String codeSMO) {
         this.codeSMO.set(codeSMO);
     }
 
-    public int getPolisVersion() {
+    public String getPolisVersion() {
         return polisVersion.get();
     }
 
-    public IntegerProperty polisVersionProperty() {
+    public StringProperty polisVersionProperty() {
         return polisVersion;
     }
 
-    public void setPolisVersion(int polisVersion) {
+    public void setPolisVersion(String polisVersion) {
         this.polisVersion.set(polisVersion);
     }
 
-    public int getPolisNumber() {
+    public String getPolisNumber() {
         return polisNumber.get();
     }
 
-    public IntegerProperty polisNumberProperty() {
+    public StringProperty polisNumberProperty() {
         return polisNumber;
     }
 
-    public void setPolisNumber(int polisNumber) {
+    public void setPolisNumber(String polisNumber) {
         this.polisNumber.set(polisNumber);
     }
 
@@ -102,15 +96,15 @@ public class Person {
         this.lastName.set(lastName);
     }
 
-    public LocalDate getBirthday() {
+    public String getBirthday() {
         return birthday.get();
     }
 
-    public ObjectProperty<LocalDate> birthdayProperty() {
+    public StringProperty birthdayProperty() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(String birthday) {
         this.birthday.set(birthday);
     }
 }
