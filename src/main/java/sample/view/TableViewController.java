@@ -6,9 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.Main;
 import sample.model.Person;
 import sample.util.ExcelDataReader;
@@ -79,8 +84,15 @@ public class TableViewController {
 
 
     public void handleOptionsButtonAction() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/test.fxml"));
-        Main.setRoot(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/test.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("ABC");
+        stage.setScene(new Scene(root1));
+        stage.show();
+
 
     }
 }
