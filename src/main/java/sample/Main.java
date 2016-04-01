@@ -6,16 +6,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-class Main extends Application {
+public class Main extends Application {
+    static Parent root;
+    Scene scene;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
+        scene = new Scene(root, 1200, 600);
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1200, 600));
+        primaryStage.setScene(scene);
         primaryStage.show();
 
     }
 
+    public static void setRoot(Parent root) {
+        Main.root = root;
+    }
 
     public static void main(String[] args) {
         launch(args);

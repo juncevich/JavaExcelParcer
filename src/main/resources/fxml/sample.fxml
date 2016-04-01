@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -40,10 +41,23 @@
                             <children>
                                 <Pane>
                                     <children>
-                                        <Button fx:id="openFile" mnemonicParsing="false" onAction="#handleOpenButtonAction" prefHeight="70.0" prefWidth="70.0" text="Button" />
+                                        <Button fx:id="openFile" mnemonicParsing="false" onAction="#handleOpenButtonAction" prefHeight="70.0" prefWidth="70.0" text="Open file" />
                                     </children>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
                                 </Pane>
-                                <Pane />
+                                <Pane>
+                           <children>
+                              <Button fx:id="options" mnemonicParsing="false" onAction="#handleOptionsButtonAction" prefHeight="70.0" prefWidth="70.0" text="Options">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin></Pane>
                             </children>
                         </HBox>
                     </children>
